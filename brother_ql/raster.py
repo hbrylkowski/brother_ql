@@ -97,8 +97,7 @@ class BrotherQLRaster(object):
         self.page_number = 0
         self.data += b'\x1B\x40'  # ESC @  # ESC @
         self.data += b'\x1B\x4A\x02'
-        self.data += b'\x1B\x69\x43'
-        self.data = bytes([1 & 0xFF])
+        self.data += b'\x1B\x69\x43\x02'
 
     def add_status_information(self):
         """ Status Information Request """
