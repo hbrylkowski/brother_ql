@@ -278,5 +278,5 @@ class BrotherQLRaster(object):
         else:
             self.data += b'\x1B\x69\x43'
             self.data = bytes([2 & 0xFF])
-            self.data += b'\x1A'  # 0x0C = FF  = Form Feed
+            self.data += b'\x0C'  # 0x0C = FF  = Form Feed
 
