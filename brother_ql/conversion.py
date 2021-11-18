@@ -69,16 +69,13 @@ def convert(qlr, images, label, **kwargs):
         raise BrotherQLUnsupportedCmd('Printing in red is not supported with the selected model.')
 
     try:
-        if first_page:
-            qlr.add_switch_mode()
+        qlr.add_switch_mode()
     except BrotherQLUnsupportedCmd:
         pass
-    if first_page:
-        qlr.add_invalidate()
-        qlr.add_initialize()
+    qlr.add_invalidate()
+    qlr.add_initialize()
     try:
-        if first_page:
-            qlr.add_switch_mode()
+        qlr.add_switch_mode()
     except BrotherQLUnsupportedCmd:
         pass
 
@@ -201,6 +198,6 @@ def convert(qlr, images, label, **kwargs):
         else:
             qlr.add_raster_data(im)
 
-        qlr.add_print(last_page=last_page)
+        qlr.add_print(last_page=images[-1] == image)
 
     return qlr.data
