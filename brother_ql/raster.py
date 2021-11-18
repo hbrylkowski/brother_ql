@@ -95,11 +95,13 @@ class BrotherQLRaster(object):
 
     def add_initialize(self):
         self.page_number = 0
-        self.data += b'\x1B\x40'  # ESC @
+        self.data += b'\x1B\x40'  # ESC @  # ESC @
 
     def add_status_information(self):
         """ Status Information Request """
         self.data += b'\x1B\x69\x53'  # ESC i S
+        self.data += b'\x1B\x4A\x02'
+
 
     def add_switch_mode(self):
         """
@@ -278,5 +280,5 @@ class BrotherQLRaster(object):
         else:
             self.data += b'\x1B\x69\x43'
             self.data = bytes([2 & 0xFF])
-            # self.data += b'\x1A'  # 0x0C = FF  = Form Feed
+            self.data += b'\x1A'  # 0x0C = FF  = Form Feed
 
