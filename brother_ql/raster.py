@@ -96,14 +96,11 @@ class BrotherQLRaster(object):
     def add_initialize(self):
         self.page_number = 0
         self.data += b'\x1B\x40'  # ESC @  # ESC @
-        self.data += b'\x1B\x4A\x02'
-        self.data += b'\x1B\x69\x43\x02'
+
 
     def add_status_information(self):
         """ Status Information Request """
         self.data += b'\x1B\x69\x53'  # ESC i S
-
-
 
     def add_switch_mode(self):
         """
@@ -198,6 +195,7 @@ class BrotherQLRaster(object):
     def add_margins(self, dots=0x23):
         self.data += b'\x1B\x69\x64'  # ESC i d
         self.data += struct.pack('<H', dots)
+        self.data += b'\x1B\x4A\x02'  # ESC J n page feed
 
     def add_compression(self, compression=True):
         """
@@ -276,9 +274,7 @@ class BrotherQLRaster(object):
     def add_print(self, last_page=True):
         if last_page:
             self.data += b'\x1A'  # 0x1A = ^Z = SUB; here: EOF = End of File
-
+            self.data += b'\x1B\x69\x43\x00'  # ESC i C n
         else:
-            self.data += b'\x1B\x69\x43'
-            self.data = bytes([2 & 0xFF])
-            self.data += b'\x1A'  # 0x0C = FF  = Form Feed
-
+            self.data += b'\x0D\x0A'  # 0x0C = FF  = Form Feed
+            self.data += b'\x1B\x69\x43\x02'  # ESC i C n page cut
