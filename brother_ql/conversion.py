@@ -46,7 +46,8 @@ def convert(qlr, images, label, **kwargs):
         * **threshold**
     """
     label_specs = label_type_specs[label]
-
+    last_page = kwargs.get('last_page', True)
+    first_page = kwargs.get('first_page', True)
     dots_printable = label_specs['dots_printable']
     right_margin_dots = label_specs['right_margin_dots']
     right_margin_dots += right_margin_addition.get(qlr.model, 0)
@@ -68,13 +69,16 @@ def convert(qlr, images, label, **kwargs):
         raise BrotherQLUnsupportedCmd('Printing in red is not supported with the selected model.')
 
     try:
-        qlr.add_switch_mode()
+        if first_page:
+            qlr.add_switch_mode()
     except BrotherQLUnsupportedCmd:
         pass
-    qlr.add_invalidate()
-    qlr.add_initialize()
+    if first_page:
+        qlr.add_invalidate()
+        qlr.add_initialize()
     try:
-        qlr.add_switch_mode()
+        if first_page:
+            qlr.add_switch_mode()
     except BrotherQLUnsupportedCmd:
         pass
 
@@ -197,6 +201,6 @@ def convert(qlr, images, label, **kwargs):
         else:
             qlr.add_raster_data(im)
 
-        qlr.add_print(last_page=kwargs.get('last_page', True))
+        qlr.add_print(last_page=last_page)
 
     return qlr.data
