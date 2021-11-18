@@ -277,4 +277,4 @@ class BrotherQLRaster(object):
             self.data += b'\x1B\x69\x43\x00'  # ESC i C n
         else:
             self.data += b'\x0D\x0A'  # 0x0C = FF  = Form Feedt
-            self.data += b'\x1B\x69\x43\x02'  # ESC i C n
+            self.data += b'\x1B\x69\x43\x01'  # ESC i C n half cut
