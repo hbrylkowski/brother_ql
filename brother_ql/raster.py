@@ -97,6 +97,8 @@ class BrotherQLRaster(object):
         self.page_number = 0
         self.data += b'\x1B\x40'  # ESC @  # ESC @
         self.data += b'\x1B\x4A\x02'
+        self.data += b'\x1B\x69\x43'
+        self.data = bytes([1 & 0xFF])
 
     def add_status_information(self):
         """ Status Information Request """
@@ -274,8 +276,6 @@ class BrotherQLRaster(object):
 
     def add_print(self, last_page=True):
         if last_page:
-            self.data += b'\x1B\x69\x43'
-            self.data = bytes([1 & 0xFF])
             self.data += b'\x1A'  # 0x1A = ^Z = SUB; here: EOF = End of File
 
         else:
