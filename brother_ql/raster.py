@@ -272,7 +272,7 @@ class BrotherQLRaster(object):
     def add_print(self, last_page=True):
         if last_page:
             self.data += b'\x1B\x69\x43'
-            self.data = bytes([0 & 0xFF])
+            self.data = bytes([1 & 0xFF])
             self.data += b'\x1A'  # 0x1A = ^Z = SUB; here: EOF = End of File
 
         else:
