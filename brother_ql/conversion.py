@@ -196,9 +196,7 @@ def convert(qlr, images, label, **kwargs):
             qlr.add_raster_data(black_im, red_im)
         else:
             qlr.add_raster_data(im)
-        last_page = kwargs.get('last_page', True)
-        if not last_page:
 
-        qlr.add_print(last_page=)
+        qlr.add_print(last_page=kwargs.get('last_page', True))
 
     return qlr.data
