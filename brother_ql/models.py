@@ -60,7 +60,7 @@ ALL_MODELS = [
     Model('PT-P750W', (31, 14172), number_bytes_per_row=16),
     Model('PT-P900W', (57, 28346), number_bytes_per_row=70),
     Model('PT-P950NW', (57, 28346), number_bytes_per_row=70),
-    Model('PT-P9700', (57, 28346), number_bytes_per_row=70),
+    Model('PT-9700PC', (57, 28346), number_bytes_per_row=70),
 ]
 
 
