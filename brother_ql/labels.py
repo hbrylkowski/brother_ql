@@ -119,7 +119,7 @@ ALL_LABELS = (
     Label("pt36", (36, 0), FormFactor.PTOUCH_ENDLESS, (512, 0), (454, 0), 61, feed_margin=14),
     Label("pt712", (12, 0), FormFactor.PTOUCH_ENDLESS, (267, 0), (150, 0), 71, restricted_to_models=['PT-P9700']),
     Label("pt718", (18, 0), FormFactor.PTOUCH_ENDLESS, (309, 0), (234, 0), 71, restricted_to_models=['PT-P9700']),
-    Label("pt724", (24, 0), FormFactor.PTOUCH_ENDLESS, (300, 0), (320, 0), 20, restricted_to_models=['PT-P9700']),
+    Label("pt724", (24, 0), FormFactor.PTOUCH_ENDLESS, (320, 0), (320, 0), 20, restricted_to_models=['PT-P9700']),
     Label("pt736", (36, 0), FormFactor.PTOUCH_ENDLESS, (384, 0), (384, 0), 0, restricted_to_models=['PT-P9700']),
 
 )
