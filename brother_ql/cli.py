@@ -176,12 +176,11 @@ def analyze_cmd(ctx, *args, **kwargs):
 
 @cli.command(name='send', short_help='send an instruction file to the printer')
 @click.argument('instructions', type=click.File('rb'))
-@click.option('--res', is_flag=True, help='Non Blocking get response.')
 @click.pass_context
 def send_cmd(ctx, *args, **kwargs):
     from brother_ql.backends.helpers import send
     send(instructions=kwargs['instructions'].read(), printer_identifier=ctx.meta.get('PRINTER'),
-         backend_identifier=ctx.meta.get('BACKEND'), blocking=kwargs['res'])
+         backend_identifier=ctx.meta.get('BACKEND'), blocking=True)
 
 
 if __name__ == '__main__':
